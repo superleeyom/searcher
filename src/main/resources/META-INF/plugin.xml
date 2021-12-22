@@ -1,0 +1,45 @@
+<idea-plugin>
+    <id>com.leeyom.app.searcher</id>
+    <name>Searcher</name>
+    <vendor email="leeyomwang@163.com" url="https://blog.leeyom.top">Leeyom Wang</vendor>
+
+    <description><![CDATA[
+    <em>Search with Github or Stack Overflow or Baidu</em>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="searcher.baidu.action.in.console" class="com.leeyom.searcher.action.SearcherWithBaiduAction" text="Search with Baidu"
+                description="Search with Baidu">
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="after" relative-to-action="$SearchWeb"/>
+        </action>
+        <action id="searcher.baidu.action.in.editor" class="com.leeyom.searcher.action.SearcherWithBaiduAction" text="Search with Baidu"
+                description="Search with Baidu">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$SearchWeb"/>
+        </action>
+        <action id="searcher.github.action.in.console" class="com.leeyom.searcher.action.SearcherWithGithubAction" text="Search with Github"
+                description="Search with Github">
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="after" relative-to-action="searcher.baidu.action.in.console"/>
+        </action>
+        <action id="searcher.github.action.in.editor" class="com.leeyom.searcher.action.SearcherWithGithubAction" text="Search with Github"
+                description="Search with Github">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="searcher.baidu.action.in.editor"/>
+        </action>
+        <action id="searcher.stackoverflow.action.in.console" class="com.leeyom.searcher.action.SearcherWithStackOverflowAction" text="Search with StackOverflow"
+                description="Search with StackOverflow">
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="after" relative-to-action="searcher.github.action.in.console"/>
+        </action>
+        <action id="searcher.stackoverflow.action.in.editor" class="com.leeyom.searcher.action.SearcherWithStackOverflowAction" text="Search with StackOverflow"
+                description="Search with StackOverflow">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="searcher.github.action.in.editor"/>
+        </action>
+    </actions>
+</idea-plugin>
